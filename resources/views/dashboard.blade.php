@@ -1,3 +1,6 @@
+@extends('layout')
+
+@section('main')
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -11,7 +14,17 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     You're logged in!
                 </div>
+                
+                <div class="dashboard">
+                    <ul>
+                        <li><a href="{{route('frontend.blog.create')}}">Create Post</a></li>
+                        <li><a href="">Create Catagory</a></li>
+                        <li><a href="">Catagories List</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+
+@endsection

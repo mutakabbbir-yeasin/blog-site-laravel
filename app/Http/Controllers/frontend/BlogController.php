@@ -8,10 +8,22 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     public function index(){
-        return view('frontend.blog');
+        return view('frontend.blogPosts.blog');
     } 
 
     public function show(){
-        return view('frontend.single-blog-post');
+        return view('frontend.blogPosts.single-blog-post');
+    }
+
+    public function create(){
+        return view('frontend.blogPosts.create-blog-post');
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'title'=>'required',
+            'image'=>'required | image',
+            'body'=>'required'
+        ]);
     }
 } 

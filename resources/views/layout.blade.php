@@ -12,6 +12,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    @yield('head')
   </head> 
   <body>
     <div id="wrapper">
@@ -29,6 +30,15 @@
             <li><a class="{{Request::RouteIs('frontend.blog') ? 'active' : ''}}" href="{{route('frontend.blog')}}" >Blog</a></li>
             <li><a class="{{Request::RouteIs('frontend.about') ? 'active' : ''}}" href="{{route('frontend.about')}}">About</a></li>
             <li><a class="{{Request::RouteIs('frontend.contact') ? 'active' : ''}}" href="{{route('frontend.contact')}}">Contact</a></li>
+            @guest
+              <li><a class="{{Request::RouteIs('login') ? 'active' : ''}}" href="{{route('login')}}">Login</a></li>
+              <li><a class="{{Request::RouteIs('register') ? 'active' : ''}}" href="{{route('register')}}">Register</a></li>
+            @endguest
+            @auth
+            <li><a class="{{Request::RouteIs('dashboard') ? 'active' : ''}}" href="{{route('dashboard')}}">Dashboard</a></li>
+            @endauth
+            
+
           </ul>
         </div>
 
@@ -78,5 +88,6 @@
           document.querySelector(".sidebar").style.width = "0";
         });
     </script>
+    @yield('scripts')
   </body>
 </html>
